@@ -8,7 +8,7 @@ class UserSessionController < ActionController::Base
       @user.save
     end
 
-    session[:user] = @user
+    session[:user] = @user.id
 
     respond_to do |format|
       format.html { render :json => "Session started for user #{@user.name}"}
@@ -17,6 +17,10 @@ class UserSessionController < ActionController::Base
   end
 
   def stop
+    session[:user] = nil
 
+    respond_to do |format|
+      format.html { render :json => "Session ended for user #{@user.name}"}
+    end
   end
 end
