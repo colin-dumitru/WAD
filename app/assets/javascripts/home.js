@@ -20,7 +20,7 @@ var options = {
     'deleteBoard' : {
         label: 'Delete Board',
         template: '',
-        url: '/board/delete/<board id>',
+        url: '/boards/<board id>',
         method: 'DELETE'
     },
     'postMessage' : {

@@ -1,4 +1,16 @@
 class BoardsController < ActionController::Base
+  before_action :check_login, :only => [:create, :postMessage, :destroy]
+
+  def check_login
+    unless session[:user]
+      respond_to do |format|
+        format.json { render :json => 'Please use /session/start/<name> to start a new session', :status => :unauthorized }
+      end
+      return false
+    end
+  end
+
+
   def index
     @boards = Board.all
 
@@ -21,6 +33,25 @@ class BoardsController < ActionController::Base
 
     respond_to do |format|
       format.json { render :json => @board.posts }
+    end
+  end
+
+  def destroy
+    @board = Board.find(params[:id])
+    status = 'Fail'
+
+    if @board.user_id == session[:user]
+      @board.destroy
+      status = 'Success'
+    end
+
+    respond_to do |format|
+      format.json { render :json => {
+          links: [
+              {type: 'list_boards', url: '/boards.json'}
+          ],
+          status: status
+      } }
     end
   end
 
