@@ -20,7 +20,8 @@ class UserSessionController < ActionController::Base
     session[:user] = nil
 
     respond_to do |format|
-      format.html { render :json => "Session ended for user #{@user.name}"}
+      format.html { render :json => 'Session ended'
+      }
     end
   end
 end
