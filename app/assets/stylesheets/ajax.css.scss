@@ -1,3 +1,37 @@
 // Place all the styles related to the ajax controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wall {
+  background-color: #150e2f;
+  width: 45%;
+  float: right;
+  padding: 5px;
+}
+
+#messages > li {
+  box-shadow: black 0 0 10px;
+  border-radius: 3px;
+  background: #d7d7d7;
+  text-decoration: none;
+  list-style: none;
+  margin-left: -40px;
+  margin-bottom: 5px;
+}
+
+img{
+  width: 100%;
+}
+
+.imgTitle{
+  text-align: center;
+  color: #181818;
+  font-size: 1.2em;
+}
+
+.imgDesc{
+  text-align: left;
+  color: #1a1f20;
+  font-size: 0.9em;
+  background-color: #b3c9d4;
+}

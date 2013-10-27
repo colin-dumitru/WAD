@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
     render template: 'home.erb'
   end
 
+  def stream
+    render template: 'stream.erb'
+  end
+
 end

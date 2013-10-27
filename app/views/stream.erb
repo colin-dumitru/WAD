@@ -1,0 +1,35 @@
+<div style="width: 800px; margin: 0 auto;">
+  <div style="background-color: #ffffff;" class="wall">
+    <label>
+      Feed:
+      <input id='streamFeedName' style="width: 200px; border-radius: 3px;" value="news" />
+    </label>
+
+    <button id='listen'>Listen</button>
+
+    <ul id='messages'>
+    </ul>
+
+  </div>
+
+  <div style="background-color: #27415c; box-shadow: black 0 0 10px; z-index: 100; color: white;" class="wall">
+    <label>
+      Feed:
+      <input id='postFeedName' style="width: 300px; border-radius: 3px;" value="news" />
+    </label>
+
+    <label>
+      Message:
+      <textarea id='feedMessage' style="width: 350px; height: 200px; border-radius: 3px;">
+        Tsunami in Japan http://imgur.com/b0zaHCl
+      </textarea>
+    </label>
+
+    <button id='postMessage'>Post</button>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  bindAjax();
+</script>

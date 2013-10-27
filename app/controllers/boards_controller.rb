@@ -1,7 +1,22 @@
+require 'json'
+
 class BoardsController < ActionController::Base
+
   before_action :check_login, :only => [:create, :postMessage, :destroy]
 
   def check_login
+    #temp
+    unless session[:user]
+      user = User.find_by name: 'catalin'
+
+      unless user
+        user = User.new(name: 'catalin')
+        user.save
+      end
+
+      session[:user]
+    end
+
     unless session[:user]
       respond_to do |format|
         format.json { render :json => 'Please use /session/start/<name> to start a new session', :status => :unauthorized }
@@ -82,5 +97,32 @@ class BoardsController < ActionController::Base
           post: post
       } }
     end
+  end
+
+  def postMessageByName
+    board = getBoard(params[:name])
+
+    post = board.posts.create(message: params[:message], user_id: session[:user])
+    post.save
+
+    respond_to do |format|
+      format.json { render :json => {
+          links: [
+              {type: 'list_message', url: "/board/#{params[:id]}.json"}
+          ],
+          post: post
+      } }
+    end
+  end
+
+  def getBoard(name)
+    board = Board.find_by name: name
+
+    if board == nil
+      board = User.find(session[:user]).boards.create(name: params[:name])
+      board.save
+    end
+
+    board
   end
 end
