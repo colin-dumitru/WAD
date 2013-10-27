@@ -6,5 +6,7 @@ WAD::Application.routes.draw do
   get '/session/end' => 'user_session#stop'
   post '/board/:id/post' => 'boards#postMessage'
 
+  get '/ajax' => 'ajax#show'
+
   root :to => 'application#show'
 end

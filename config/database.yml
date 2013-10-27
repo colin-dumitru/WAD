@@ -1,13 +1,12 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: db_dev
-  pool: 5
   timeout: 5000
+  encoding: unicode
+  database: dc26q3k5vv8hm # name your development app something
+  host: ec2-54-235-86-117.compute-1.amazonaws.com
+  pool: 5
+  username: eejzblxorkcvgq
+  password: bZgz-l0oecqpBdvPnnhKUEHk47 # or leave blank if you didn't set a password
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,6 +19,10 @@ test:
 
 production:
   adapter: postgresql
-  database: db_production
-  pool: 5
   timeout: 5000
+  encoding: unicode
+  database: dc26q3k5vv8hm # name your development app something
+  host: ec2-54-235-86-117.compute-1.amazonaws.com
+  pool: 5
+  username: eejzblxorkcvgq
+  password: bZgz-l0oecqpBdvPnnhKUEHk47 # or leave blank if you didn't set a password
