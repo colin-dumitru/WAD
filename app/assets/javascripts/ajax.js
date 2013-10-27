@@ -45,7 +45,7 @@ function appendMessages(messages) {
         var imgUrl = getImgurLink(message.message);
 
         li.append(message.message);
-        container.append(li);
+        container.prepend(li);
 
         if(imgUrl) {
             appendImgurInfo(imgUrl, li);
